@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Animaciones</title>
     <style>
-        
+        .pulser{
+            width: 30px;
+            height: 30px;
+            background: blue;
+            border-radius: 50%;
+            position: relative;
+        }
+        .pulser:hover {
+            scale: 2;
+            background: purple;
+            box-shadow: 0 0 10px purple;
+        }
+        body {
+            display: grid;
+            place-content: center;
+            min-height: 50vh;
+        }
     </style>
 </head>
 <body>
-    
+    <div class="pulser">
+
+    </div>
 </body>
 </html>
