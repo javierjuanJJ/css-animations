@@ -13,15 +13,14 @@
             border-radius: 50%;
             position: relative;
             transition-duration: 2s;
-            transition-delay: 5s;
-            opacity: 0;
+            transition: background 300ms linear 2s;
+            opacity: 1;
         }
 
         .pulser:hover {
             scale: 2;
             background: purple;
             box-shadow: 0 0 10px purple;
-            opacity: 1;
         }
 
         body {
@@ -29,28 +28,10 @@
             place-content: center;
             min-height: 50vh;
         }
-
-        .pulser:nth-child(1) {
-            transition-delay: 0ms;
-        }
-
-        .pulser:nth-child(2) {
-            transition-delay: 300ms;
-        }
-
-        .pulser:nth-child(3) {
-            transition-delay: 600ms;
-        }
     </style>
 </head>
 
 <body>
-    <div class="pulser">
-
-    </div>
-    <div class="pulser">
-
-    </div>
     <div class="pulser">
 
     </div>
