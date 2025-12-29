@@ -12,23 +12,20 @@
             background: blue;
             border-radius: 50%;
             position: relative;
-            transition-duration: 2s;
-            transition:
-                all 300ms ease-in-out;
-            opacity: 1;
+            animation: move;
+            animation-duration: 3s;
         }
 
-        .pulser:hover {
-            scale: 2;
-            background: purple;
-            box-shadow: 0 0 10px purple;
-            transition-duration: 1s;
-        }
 
-        @media (prefers-reduced-motion: reduce) {
-            .pulser {
-                transition: none;
-                /* Desactiva las transiciones */
+        @keyframes move {
+            from {
+                transform: translateX(0px);
+                /* 0% */
+            }
+
+            to {
+                transform: translateX(200px);
+                /* 100% */
             }
         }
 
