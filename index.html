@@ -6,58 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Animaciones</title>
     <style>
-        .pulser {
-            width: 30px;
-            height: 30px;
-            background: blue;
-            border-radius: 50%;
-            position: relative;
-        }
-        .pulser::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: green;
-            border-radius: 50%;
-            z-index: -1;
 
-            animation-name: pulse;
+        img{
+            width: 80px;
+            animation: mover;
             animation-duration: 2s;
-            animation-delay: 1s;
-            animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
+            animation-timing-function: linear;
         }
 
-        @keyframes pulse {
-            0% {
-                opacity: 0;
+        @keyframes mover {
+            from  {
+                transform: translateX(0);
             }
-
-            50% {
-                scale: 1.4;
-                opacity: .4;
-            }
-
-            100% {
-                opacity: .6;
+            
+            to {
+                transform: translateX(200px);
             }
         }
-
-        body {
-            display: grid;
-            place-content: center;
-            min-height: 50vh;
-        }
+        
     </style>
 </head>
 
 <body>
-    <div class="pulser">
-
-    </div>
+    <img src="mario.png" alt="">
 </body>
 
 </html>
