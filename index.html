@@ -2,173 +2,105 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Spider-Man | El Hombre Araña</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky Navbar + 2 Columnas</title>
     <style>
-        :root {
-            --red: #c62828;
-            --blue: #0d47a1;
-            --dark: #111;
-            --light: #f5f5f5;
-            --gray: #e0e0e0;
-        }
-
+        /* RESET BÁSICO */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background-color: var(--light);
-            color: #222;
-            line-height: 1.7;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--red), var(--blue));
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            letter-spacing: 2px;
-        }
-
-        header p {
-            max-width: 900px;
-            margin: 1.5rem auto 0;
-            font-size: 1.2rem;
-        }
-
-        nav {
-            background-color: var(--dark);
-            padding: 1rem;
+        /* NAVBAR */
+        .navbar {
             position: sticky;
             top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
+            background: #111;
+            color: white;
+            padding: 15px 30px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            list-style: none;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+
+            /* Animación */
+            animation: slideDown 0.6s ease;
         }
 
-        nav a {
+        .navbar nav a {
             color: white;
+            margin-left: 20px;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            position: relative;
         }
 
-        nav a:hover {
-            color: #ff5252;
-        }
-
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        section h2 {
-            font-size: 2.2rem;
-            color: var(--red);
-            margin-bottom: 1.5rem;
-            border-left: 6px solid var(--blue);
-            padding-left: 1rem;
-        }
-
-        section h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            color: var(--blue);
-        }
-
-        section p {
-            margin: 1rem 0;
-            text-align: justify;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .villain {
-            border-top: 5px solid var(--red);
-        }
-
-        .suit {
-            border-top: 5px solid var(--blue);
-        }
-
-        ul.custom {
-            margin: 1rem 0 1rem 2rem;
-        }
-
-        ul.custom li {
-            margin-bottom: 0.5rem;
-        }
-
-        blockquote {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: var(--gray);
-            border-left: 8px solid var(--red);
-            font-style: italic;
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        #progress {
-
-            position: fixed;
-            top: 0;
+        /* Animación hover */
+        .navbar nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
             width: 0%;
-            background: red;
-            height: 1em;
-
-            animation: progress-grow auto linear;
-            animation-timeline: scroll(root, block);
+            height: 2px;
+            background: #00e5ff;
+            transition: width 0.3s;
         }
 
-        @keyframes progress-grow {
+        .navbar nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ANIMACIÓN NAVBAR */
+        @keyframes slideDown {
             from {
-                width: 0%;
+                transform: translateY(-100%);
+                opacity: 0;
             }
 
             to {
-                width: 100%;
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* CONTENEDOR 2 COLUMNAS */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 50px;
+        }
+
+        /* COLUMNAS */
+        .col img {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .col h2 {
+            margin-bottom: 10px;
+        }
+
+        /* SECCIÓN EXTRA */
+        .extra {
+            padding: 50px;
+            background: #f4f4f4;
+        }
+
+        .extra img {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -176,165 +108,42 @@
 
 <body>
 
-
-    <div id="progress"></div>
-
-
-
-    <main>
-        <header>
-            <h1>Spider-Man</h1>
-            <p>
-                Spider-Man es uno de los superhéroes más icónicos de Marvel Comics.
-                Desde su primera aparición en 1962, se ha convertido en un símbolo de responsabilidad, sacrificio y
-                humanidad.
-            </p>
-        </header>
-
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <h1>Mi Web</h1>
         <nav>
-            <ul>
-                <li><a href="#origen">Origen</a></li>
-                <li><a href="#poderes">Poderes</a></li>
-                <li><a href="#trajes">Trajes</a></li>
-                <li><a href="#villanos">Villanos</a></li>
-                <li><a href="#linea-tiempo">Línea Temporal</a></li>
-                <li><a href="#curiosidades">Curiosidades</a></li>
-            </ul>
+            <a href="#inicio">Inicio</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
         </nav>
+    </header>
 
-        <section id="origen">
-            <h2>Origen de Spider-Man</h2>
-
-            <div class="card">
-                <p>
-                    Spider-Man fue creado por <strong>Stan Lee</strong> y <strong>Steve Ditko</strong>,
-                    y apareció por primera vez en <em>Amazing Fantasy #15</em> en agosto de 1962.
-                    El personaje rompió esquemas al mostrar a un adolescente común enfrentando problemas reales.
-                </p>
-
-                <p>
-                    Peter Parker es un joven estudiante brillante pero socialmente marginado que vive en Nueva York
-                    con sus tíos Ben y May. Su vida cambia radicalmente cuando es mordido por una araña
-                    radiactiva durante una exhibición científica.
-                </p>
-
-                <blockquote>
-                    “Un gran poder conlleva una gran responsabilidad.”
-                </blockquote>
-
-                <p>
-                    Tras obtener sus poderes, Peter decide usarlos para beneficio personal,
-                    lo que indirectamente provoca la muerte de su tío Ben.
-                    Este evento define su vida y lo impulsa a convertirse en Spider-Man.
-                </p>
-            </div>
-        </section>
-
-        <section id="poderes">
-            <h2>Poderes y Habilidades</h2>
-
-            <div class="card">
-                <ul class="custom">
-                    <li>Fuerza sobrehumana proporcional a una araña</li>
-                    <li>Agilidad y reflejos extraordinarios</li>
-                    <li>Capacidad de adherirse a superficies</li>
-                    <li>Sentido arácnido para detectar peligros</li>
-                    <li>Intelecto científico avanzado</li>
-                </ul>
-
-                <p>
-                    A diferencia de otros héroes, Spider-Man depende mucho de su inteligencia.
-                    Él mismo diseña sus lanzatelarañas y mejora constantemente su equipamiento.
-                </p>
-            </div>
-        </section>
-
-        <section id="trajes">
-            <h2>Trajes Icónicos</h2>
-
-            <div class="grid">
-                <div class="card suit">
-                    <h3>Traje Clásico</h3>
-                    <p>
-                        El traje rojo y azul es el más reconocible y simboliza el equilibrio entre poder y humanidad.
-                    </p>
-                </div>
-
-                <div class="card suit">
-                    <h3>Traje Negro (Simbionte)</h3>
-                    <p>
-                        Otorga mayor fuerza, pero afecta negativamente la personalidad de Peter.
-                    </p>
-                </div>
-
-                <div class="card suit">
-                    <h3>Traje Iron Spider</h3>
-                    <p>
-                        Diseñado por Tony Stark, incluye brazos mecánicos y tecnología avanzada.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="villanos">
-            <h2>Villanos Principales</h2>
-
-            <div class="grid">
-                <div class="card villain">
-                    <h3>Green Goblin</h3>
-                    <p>
-                        Norman Osborn es el enemigo más personal de Spider-Man,
-                        responsable de grandes tragedias en su vida.
-                    </p>
-                </div>
-
-                <div class="card villain">
-                    <h3>Doctor Octopus</h3>
-                    <p>
-                        Un científico brillante con brazos mecánicos que representan el lado oscuro del intelecto.
-                    </p>
-                </div>
-
-                <div class="card villain">
-                    <h3>Venom</h3>
-                    <p>
-                        Un simbionte alienígena que refleja lo que Spider-Man podría convertirse sin control moral.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="linea-tiempo">
-            <h2>Línea Temporal</h2>
-
-            <div class="card">
-                <p><strong>1962:</strong> Primera aparición en Amazing Fantasy #15.</p>
-                <p><strong>1973:</strong> Muerte de Gwen Stacy.</p>
-                <p><strong>1984:</strong> Introducción del traje negro.</p>
-                <p><strong>2002:</strong> Primera película live-action de Sam Raimi.</p>
-                <p><strong>2016:</strong> Integración al MCU.</p>
-            </div>
-        </section>
-
-        <section id="curiosidades">
-            <h2>Curiosidades</h2>
-
-            <div class="card">
-                <ul class="custom">
-                    <li>Fue el primer superhéroe adolescente con problemas reales.</li>
-                    <li>Es uno de los personajes más rentables de la historia del entretenimiento.</li>
-                    <li>Ha tenido múltiples versiones en el multiverso.</li>
-                    <li>Stan Lee aparece en casi todas sus películas.</li>
-                </ul>
-            </div>
-        </section>
-
-        <footer>
+    <!-- CONTENIDO -->
+    <main class="container" id="inicio">
+        <section class="col">
+            <h2>Columna Izquierda</h2>
             <p>
-                Página creada solo con HTML y CSS • Spider-Man © Marvel Comics
+                Este es un ejemplo de una columna con texto e imagen.
+                El navbar se queda fijo al hacer scroll.
             </p>
-        </footer>
+            <img src="https://picsum.photos/400/250?random=1" alt="Imagen 1">
+        </section>
+
+        <section class="col">
+            <h2>Columna Derecha</h2>
+            <p>
+                Puedes usar este layout para blogs, landing pages o portfolios.
+            </p>
+            <img src="https://picsum.photos/400/250?random=2" alt="Imagen 2">
+        </section>
     </main>
+
+    <!-- MÁS CONTENIDO PARA SCROLL -->
+    <section class="extra" id="galeria">
+        <h2>Galería</h2>
+        <img src="https://picsum.photos/600/300?random=3">
+        <img src="https://picsum.photos/600/300?random=4">
+    </section>
 
 </body>
 
